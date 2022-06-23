@@ -41,14 +41,14 @@ public class HorseTest {
 
     @Test
     public void secondParamOfConstructorShouldNotBeNegativeAndShouldThrowException() {
-        Assertions.assertThrows(IllegalArgumentException.class, () -> { new Horse("name", -1.0, 1.0);});
+        Assertions.assertThrows(IllegalArgumentException.class, () -> { new Horse("TestName", -1.0, 1.0);});
     }
 
     @Test
     public void secondParamOfConstructorShouldNotBeNegativeAndThrowShouldContainOurText() {
         String textException = "";
         try {
-            new Horse("name", -1.0, 1.0);
+            new Horse("TestName", -1.0, 1.0);
         } catch (IllegalArgumentException e) {
             textException = e.getMessage();
         }
@@ -57,19 +57,35 @@ public class HorseTest {
 
     @Test
     public void thirdParamOfConstructorShouldNotBeNegativeAndShouldThrowException() {
-        Assertions.assertThrows(IllegalArgumentException.class, () -> { new Horse("name", 1.0, -1.0);});
+        Assertions.assertThrows(IllegalArgumentException.class, () -> { new Horse("TestName", 1.0, -1.0);});
     }
 
     @Test
     public void thirdParamOfConstructorShouldNotBeNegativeAndThrowShouldContainOurText() {
         String textException = "";
         try {
-            new Horse("name", 1.0, -1.0);
+            new Horse("TestName", 1.0, -1.0);
         } catch (IllegalArgumentException e) {
             textException = e.getMessage();
         }
         Assertions.assertEquals("Distance cannot be negative.", textException);
     }
+
+    @Test
+    public void methodGetNameShouldReturnStringFromConstructor() {
+        String testName = "TestName";
+        Horse horse = new Horse(testName, 1.0, 1.0);
+        Assertions.assertEquals(testName, horse.getName());
+    }
+
+    @Test
+    public void methodGetSpeedShouldReturnStringFromConstructor() {
+        Double testSpeed = 1.0;
+        Horse horse = new Horse("TestName", testSpeed, 1.0);
+        Assertions.assertEquals(testSpeed, horse.getSpeed());
+    }
+
+
 
 
 }
