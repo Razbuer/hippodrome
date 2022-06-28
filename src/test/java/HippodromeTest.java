@@ -18,7 +18,11 @@ public class HippodromeTest {
      */
     @Test
     public void paramOfConstructorShouldNotBeNullAndThrowShouldContainOurText() {
-
+        try {
+            new Hippodrome(null);
+        } catch (Exception e) {
+            Assertions.assertEquals("Horses cannot be null.", e.getMessage());
+        }
     }
 
 }
