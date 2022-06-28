@@ -113,7 +113,7 @@ public class HorseTest {
      * Проверить, что метод возвращает строку, которая была передана первым параметром в конструктор;
      */
     @Test
-    public void methodGetNameShouldReturnStringFromConstructor() {
+    public void getNameShouldReturnStringFromConstructor() {
         String testName = "TestName";
         Horse horse = new Horse(testName, 1.0, 1.0);
         Assertions.assertEquals(testName, horse.getName());
@@ -123,7 +123,7 @@ public class HorseTest {
      * Проверить, что метод возвращает число, которое было передано вторым параметром в конструктор;
      */
     @Test
-    public void methodGetSpeedShouldReturnStringFromConstructor() {
+    public void getSpeedShouldReturnStringFromConstructor() {
         Double testSpeed = 1.0;
         Horse horse = new Horse("TestName", testSpeed, 1.0);
         Assertions.assertEquals(testSpeed, horse.getSpeed());
@@ -133,7 +133,7 @@ public class HorseTest {
      * Проверить, что метод возвращает число, которое было передано третьим параметром в конструктор;
      */
     @Test
-    public void methodGetDistanceShouldReturnStringFromConstructor() {
+    public void getDistanceShouldReturnStringFromConstructor() {
         Double testDistance = 1.0;
         Horse horse = new Horse("TestName", 1.0, testDistance);
         Assertions.assertEquals(testDistance, horse.getDistance());
@@ -153,7 +153,7 @@ public class HorseTest {
      * Проверить, что метод вызывает внутри метод getRandomDouble с параметрами 0.2 и 0.9.
      */
     @Test
-    public void method() {
+    public void moveShouldCalledGetRandomDoubleWithCorrectParam() {
         try(MockedStatic<Horse> mockStaticHorse = Mockito.mockStatic(Horse.class)) {
             Horse horse = new Horse("TestName", 1.0, 1.0);
             horse.move();
@@ -166,7 +166,7 @@ public class HorseTest {
      * Для этого нужно замокать getRandomDouble, чтобы он возвращал определенные значения, которые нужно задать параметризовав тест.
      */
     @Test
-    public void methodMoveShouldCorrectCalculateDistance() {
+    public void moveShouldCorrectCalculateDistance() {
         Horse horse = new Horse("TestName", 1.0, 1.0);
 
         try(MockedStatic<Horse> mockStaticHorse = Mockito.mockStatic(Horse.class)) {
