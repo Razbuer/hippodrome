@@ -82,8 +82,8 @@ public class HippodromeTest {
         Hippodrome hippodrome = new Hippodrome(horses);
         hippodrome.move();
 
-        for (Horse hors : horses) {
-            Mockito.verify(hors).move();
+        for (Horse horse : horses) {
+            Mockito.verify(horse).move();
         }
     }
 
@@ -103,6 +103,6 @@ public class HippodromeTest {
 
         Horse winner = horsesFromHippodrome.stream().max(Comparator.comparing(Horse::getDistance)).get();
 
-        Assertions.assertTrue(winner.equals(hippodrome.getWinner()));
+        Assertions.assertSame(winner, hippodrome.getWinner());
     }
 }
