@@ -161,15 +161,16 @@ public class HorseTest {
      * Проверить, что метод присваивает дистанции значение высчитанное по формуле: distance + speed * getRandomDouble(0.2, 0.9).
      * Для этого нужно замокать getRandomDouble, чтобы он возвращал определенные значения, которые нужно задать параметризовав тест.
      */
-    @Test
-    public void moveShouldCorrectCalculateDistance() {
-        Horse horse = new Horse("TestName", 1.0, 1.0);
+    @ParameterizedTest
+    @ValueSource(doubles = {0.0, 0.1, 0.9, 999.999})
+    public void moveShouldCorrectCalculateDistance(double random) {
+        Horse horse = new Horse("TestName", 123.0, 321.0);
 
         try(MockedStatic<Horse> mockStaticHorse = Mockito.mockStatic(Horse.class)) {
-            mockStaticHorse.when(() -> Horse.getRandomDouble(0.2, 0.9)).thenReturn(1.0);
+            mockStaticHorse.when(() -> Horse.getRandomDouble(0.2, 0.9)).thenReturn(random);
 
             horse.move();
-            Assertions.assertEquals(2.0, horse.getDistance());
+            Assertions.assertEquals(321 + 123 * random, horse.getDistance());
         }
     }
 }
