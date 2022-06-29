@@ -62,8 +62,9 @@ public class HippodromeTest {
         }
 
         Hippodrome hippodrome = new Hippodrome(horses);
+        List<Horse> horsesFromHippodrome = hippodrome.getHorses();
 
-        Assertions.assertEquals(horses, hippodrome.getHorses());
+        Assertions.assertArrayEquals(horses.toArray(), horsesFromHippodrome.toArray());
     }
 
     /**
