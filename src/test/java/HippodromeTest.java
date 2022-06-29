@@ -55,7 +55,7 @@ public class HippodromeTest {
      * При создании объекта Hippodrome передай в конструктор список из 30 разных лошадей;
      */
     @Test
-    public void getHorseShouldReturnCorrectList() {
+    public void getHorsesShouldReturnCorrectList() {
         List<Horse> horses = new ArrayList<>();
         for (int i = 0; i < 30; i++) {
             horses.add(new Horse("TestHorse-" + i, i, i));

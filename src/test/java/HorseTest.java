@@ -14,7 +14,7 @@ public class HorseTest {
      * */
     @Test
     public void firstParamOfConstructorShouldNotBeNullAndShouldThrowException() {
-        Assertions.assertThrows(IllegalArgumentException.class, () -> { new Horse(null, 1.0, 1.0);});
+        Assertions.assertThrows(IllegalArgumentException.class, () -> new Horse(null, 1.0, 1.0));
     }
 
     /**
@@ -24,13 +24,12 @@ public class HorseTest {
      */
     @Test
     public void firstParamOfConstructorShouldNotBeNullAndThrowShouldContainOurText() {
-        String textException = "";
         try {
             new Horse(null, 1.0, 1.0);
+            Assertions.fail();
         } catch (IllegalArgumentException e) {
-            textException = e.getMessage();
+            Assertions.assertEquals("Name cannot be null.", e.getMessage());
         }
-        Assertions.assertEquals("Name cannot be null.", textException);
     }
 
     /**
@@ -41,7 +40,7 @@ public class HorseTest {
     @ParameterizedTest
     @ValueSource(strings = {"", " ", "\t", "\n"})
     public void firstParamOfConstructorShouldNotBeEmptyAndShouldThrowException(String firstParam) {
-        Assertions.assertThrows(IllegalArgumentException.class, () -> { new Horse(firstParam, 1.0, 1.0);});
+        Assertions.assertThrows(IllegalArgumentException.class, () -> new Horse(firstParam, 1.0, 1.0));
     }
 
     /**
@@ -52,13 +51,12 @@ public class HorseTest {
     @ParameterizedTest
     @ValueSource(strings = {"", " ", "\t", "\n"})
     public void firstParamOfConstructorShouldNotBeEmptyAndThrowShouldContainOurText(String firstParam) {
-        String textException = "";
         try {
             new Horse(firstParam, 1.0, 1.0);
+            Assertions.fail();
         } catch (IllegalArgumentException e) {
-            textException = e.getMessage();
+            Assertions.assertEquals("Name cannot be blank.", e.getMessage());
         }
-        Assertions.assertEquals("Name cannot be blank.", textException);
     }
 
     /**
@@ -67,7 +65,7 @@ public class HorseTest {
      */
     @Test
     public void secondParamOfConstructorShouldNotBeNegativeAndShouldThrowException() {
-        Assertions.assertThrows(IllegalArgumentException.class, () -> { new Horse("TestName", -1.0, 1.0);});
+        Assertions.assertThrows(IllegalArgumentException.class, () -> new Horse("TestName", -1.0, 1.0));
     }
 
     /**
@@ -76,13 +74,12 @@ public class HorseTest {
      */
     @Test
     public void secondParamOfConstructorShouldNotBeNegativeAndThrowShouldContainOurText() {
-        String textException = "";
         try {
             new Horse("TestName", -1.0, 1.0);
+            Assertions.fail();
         } catch (IllegalArgumentException e) {
-            textException = e.getMessage();
+            Assertions.assertEquals("Speed cannot be negative.", e.getMessage());
         }
-        Assertions.assertEquals("Speed cannot be negative.", textException);
     }
 
     /**
@@ -100,13 +97,12 @@ public class HorseTest {
      */
     @Test
     public void thirdParamOfConstructorShouldNotBeNegativeAndThrowShouldContainOurText() {
-        String textException = "";
         try {
             new Horse("TestName", 1.0, -1.0);
+            Assertions.fail();
         } catch (IllegalArgumentException e) {
-            textException = e.getMessage();
+            Assertions.assertEquals("Distance cannot be negative.", e.getMessage());
         }
-        Assertions.assertEquals("Distance cannot be negative.", textException);
     }
 
     /**
